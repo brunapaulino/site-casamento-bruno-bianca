@@ -58,13 +58,11 @@
         <h2 class="section-title">Onde e Quando</h2>
         <div class="location-grid">
             
-            <!-- Card Cerimônia -->
             <div class="location-card">
                 <h3>Cerimônia (Igreja)</h3>
                 <p><strong>Endereço:</strong> Rua Piauí, 774, São Caetano do Sul - SP</p>
                 <p><strong>Data:</strong> 30 de janeiro de 2027</p>
                 
-                <!-- Botões de Mapa -->
                 <div class="map-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=Igreja+Sao+Joao+Batista+Rua+Piaui+774+Sao+Caetano+do+Sul" target="_blank" class="btn-map">Google Maps</a>
                     <a href="https://waze.com/ul?q=Igreja+Sao+Joao+Batista+Rua+Piaui+774+Sao+Caetano+do+Sul&navigate=yes" target="_blank" class="btn-map">Waze</a>
@@ -83,13 +81,14 @@
             </div>
             
             <div class="location-card">
-                <h3>Dress Code</h3>
-                <p><strong>Desejável traje social</strong></p>
-            <a href="https://www.google.com/search?q=paleta+de+cores+tons+neutros&sca_esv=4ef3de7c1dd16902&udm=2&biw=1358&bih=602&sxsrf=APpeQntzheqAWJnNhBJMKucgqDRM6YfUkw%3A1789756431439&ei=D4StarKkGtm45OUPuN66wAY&ved=2ahUKEwjy59Gi4viWAxVZHLkGHTivDmgQ4dUDegQIBhAN&uact=5&oq=paleta+de+cores+tons+neutros&gs_lp=Egtnd3Mtd2l6LWltZyIccGFsZXRhIGRlIGNvcmVzIHRvbnMgbmV1dHJvczIHECMYyQIYJzIHECMYyQIYJzIGEAAYCBgeMgYQABgIGB5I5hRQhgVYmhJwAXgAkAEAmAF2oAGyEaoBBDQuMTe4AQPIAQD4AQGYAgSgAsYCwgIEEAAYHpgDAIgGAZIHAzMuMaAHli6yBwMyLjG4B8MCwgcFMC4yLjLIBwyACAE&sclient=gws-wiz-img" target="_blank" class="link-dresscode">
-            Sugestão: tons neutros ↗
+            <div class="info-card">
+            <h3>Dress Code</h3>
+            <p><strong>Desejável traje social</strong></p>
+            
+            <a href="https://www.google.com/search?q=paleta+de+cores+tons+neutros&sca_esv=4ef3de7c1dd16902&udm=2&biw=1358&bih=602&sxsrf=APpeQntzheqAWJnNhBJMKucgqDRM6YfUkw%3A1789756431439&ei=D4StarKkGtm45OUPuN66wAY&ved=2ahUKEwjy59Gi4viWAxVZHLkGHTivDmgQ4dUDegQIBhAN&uact=5&oq=paleta+de+cores+tons+neutros&gs_lp=Egtnd3Mtd2l6LWltZyIccGFsZXRhIGRlIGNvcmVzIHRvbnMgbmV1dHJvczIHECMYyQIYJzIHECMYyQIYJzIGEAAYCBgeMgYQABgIGB5I5hRQhgVYmhJwAXgAkAEAmAF2oAGyEaoBBDQuMTe4AQPIAQD4AQGYAgSgAsYCwgIEEAAYHpgDAIgGAZIHAzMuMaAHli6yBwMyLjG4B8MCwgcFMC4yLjLIBwyACAE&sclient=gws-wiz-img" target="_blank" class="btn-dresscode">
+                Sugestão: tons neutros
             </a>
-                </a>
-            </div>
+        </div>
             
         </div>
     </section>
@@ -169,6 +168,44 @@
             </div>
         </div>
     </div>
+    
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal">
+            <button class="close-modal" onclick="closeCart()">×</button>
+            <h2 style="font-family: var(--font-title); color: var(--primary-color);">Seu Carrinho</h2>
+            
+            <div id="cart-items-list" class="cart-items">
+                <p style="text-align:center; color:#888;">Seu carrinho está vazio.</p>
+            </div>
+            
+            <div class="cart-total" id="cart-total-box" style="display:none;">
+                Total: R$ <span id="cart-total-value">0,00</span>
+            </div>
+            
+            <button class="btn-checkout" id="btn-checkout" onclick="checkoutPix()" style="display:none;">
+                Gerar PIX para Pagamento
+            </button>
+
+            <div class="pix-box" id="pix-instructions">
+                <p><strong>Quase lá!</strong> Transfira o valor exato para a chave PIX abaixo:</p>
+                <div class="pix-key">11966688598</div>
+                <p style="font-size: 0.85rem; color: #666; margin-top:10px;">Após o pagamento, o presente já é de vocês! Muito obrigado! ❤️</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="popup-confirmacao">
+        <div class="modal" style="text-align: center; padding: 40px 30px;">
+            <div style="font-size: 2.5rem; margin-bottom: 10px;">🤍</div>
+            <h3 style="font-family: var(--font-title); color: var(--primary-color); font-size: 1.5rem; margin-bottom: 15px;">Presente Adicionado!</h3>
+            <p id="popup-texto-item" style="font-family: var(--font-text); font-size: 0.95rem; color: var(--text-dark); margin-bottom: 25px; line-height: 1.5;"></p>
+            
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="fecharPopupConfirmacao()" style="background-color: transparent; color: var(--primary-color); border: 1px solid var(--primary-color); padding: 12px 20px; border-radius: 25px; font-weight: 600; cursor: pointer; font-size: 0.85rem; font-family: var(--font-text);">Continuar Escolhendo</button>
+                <button onclick="irParaCarrinho()" style="background-color: var(--primary-color); color: var(--white); border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; font-size: 0.85rem; font-family: var(--font-text);">Ver Carrinho</button>
+            </div>
+        </div>
+    </div>
 
 </section>
 
@@ -241,30 +278,18 @@
         </div>
     </section>
 
-    <div class="modal-overlay" id="cart-modal">
-        <div class="modal">
-            <button class="close-modal" onclick="closeCart()">×</button>
-            <h2 style="font-family: var(--font-title); color: var(--primary-color);">Seu Carrinho</h2>
-            
-            <div id="cart-items-list" class="cart-items">
-                <p style="text-align:center; color:#888;">Seu carrinho está vazio.</p>
-            </div>
-            
-            <div class="cart-total" id="cart-total-box" style="display:none;">
-                Total: R$ <span id="cart-total-value">0,00</span>
-            </div>
-            
-            <button class="btn-checkout" id="btn-checkout" onclick="checkoutPix()" style="display:none;">
-                Gerar PIX para Pagamento
-            </button>
-
-            <div class="pix-box" id="pix-instructions">
-                <p><strong>Quase lá!</strong> Transfira o valor exato para a chave PIX abaixo:</p>
-                <div class="pix-key">11966688598</div>
-                <p style="font-size: 0.85rem; color: #666; margin-top:10px;">Após o pagamento, o presente já é de vocês! Muito obrigado! ❤️</p>
-            </div>
+    <div class="modal-overlay" id="popup-confirmacao" style="display: none;">
+    <div class="modal" style="text-align: center; padding: 40px 30px;">
+        <div style="font-size: 2.5rem; margin-bottom: 10px;">🤍</div>
+        <h3 style="font-family: var(--font-title); color: var(--primary-color); font-size: 1.5rem; margin-bottom: 15px;">Presente Adicionado!</h3>
+        <p id="popup-texto-item" style="font-family: var(--font-text); font-size: 0.95rem; color: var(--text-dark); margin-bottom: 25px; line-height: 1.5;"></p>
+        
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="fecharPopupConfirmacao()" style="background-color: transparent; color: var(--primary-color); border: 1px solid var(--primary-color); padding: 12px 20px; border-radius: 25px; font-weight: 600; cursor: pointer; font-size: 0.85rem; font-family: var(--font-text);">Continuar Escolhendo</button>
+            <button onclick="irParaCarrinho()" style="background-color: var(--primary-color); color: var(--white); border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; font-size: 0.85rem; font-family: var(--font-text);">Ver Carrinho</button>
         </div>
     </div>
-
+</div>
+<script src="js/script.js"></script>
 </body>
 </html>

@@ -1,13 +1,10 @@
-// ==========================================
-// 1. CONTAGEM REGRESSIVA
-// ==========================================
 const countDownDate = new Date("2027-01-30T16:00:00").getTime();
 
 function updateTimer() {
     const now = new Date().getTime();
     const distance = countDownDate - now;
 
-    if (distance < 0) return; // Se a data já passou, para por aqui
+    if (distance < 0) return;
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -22,14 +19,9 @@ function updateTimer() {
         document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
     }
 }
-// Atualiza imediatamente e depois a cada 1 segundo
 updateTimer();
 setInterval(updateTimer, 1000);
 
-
-// ==========================================
-// 2. LISTA DE PRESENTES E CARRINHO
-// ==========================================
 const products = [
     // --- Lua de Mel ---
     { id: 1, name: "Passagens lua de mel", price: 4196.60, category: "Itens de Presentes na Lua de Mel", image:"img/presentes/passagens-lua-de-mel.jpg",fallbackEmoji: "✈️" },
@@ -101,7 +93,6 @@ function renderProducts() {
     const categories = [...new Set(products.map(p => p.category))];
 
     categories.forEach(category => {
-        // Bloco de cada Categoria
         const categoryDiv = document.createElement("div");
         categoryDiv.className = "category-group";
         
@@ -110,7 +101,6 @@ function renderProducts() {
         categoryTitle.innerText = category;
         categoryDiv.appendChild(categoryTitle);
 
-        // Agora sim a Grid de itens vai APENAS AQUI DENTRO
         const gridDiv = document.createElement("div");
         gridDiv.className = "gifts-grid";
 
@@ -118,7 +108,6 @@ function renderProducts() {
 itemsInCategory.forEach(product => {
             const priceFmt = product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
             
-            // Verifica se o produto tem imagem personalizada ou usa o emoji de fallback
             const imgContent = product.image 
                 ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 5px;">` 
                 : product.fallbackEmoji;
@@ -141,8 +130,21 @@ itemsInCategory.forEach(product => {
 function addToCart(id) {
     const item = products.find(p => p.id === id);
     cart.push(item);
-    alert(`${item.name} foi adicionado ao seu carrinho!`);
+    
+    document.getElementById('popup-texto-item').innerHTML = `<strong>${item.name}</strong> foi adicionado com sucesso ao carrinho dos noivos!`;
+    
+    document.getElementById('popup-confirmacao').style.display = 'flex';
+    
     updateCartUI();
+}
+
+function fecharPopupConfirmacao() {
+    document.getElementById('popup-confirmacao').style.display = 'none';
+}
+
+function irParaCarrinho() {
+    document.getElementById('popup-confirmacao').style.display = 'none';
+    openCart();
 }
 
 function removeFromCart(index) {
@@ -154,15 +156,15 @@ function updateCartUI() {
     const list = document.getElementById('cart-items-list');
     
     if (cart.length === 0) {
-        document.getElementById('cart-status').innerText = '🛒 Carrinho vazio';
+        document.getElementById('cart-status-text').innerText = '🛒 Carrinho vazio';
         list.innerHTML = '<p style="text-align:center; color:#888;">Seu carrinho está vazio.</p>';
         document.getElementById('cart-total-box').style.display = 'none';
         document.getElementById('btn-checkout').style.display = 'none';
         document.getElementById('pix-instructions').style.display = 'none';
         return;
     }
-    
-    document.getElementById('cart-status').innerText = `🛒 ${cart.length} item(ns) selecionado(s)`;
+
+    document.getElementById('cart-status-text').innerText = ` ${cart.length} item(ns) selecionado(s)`;
     list.innerHTML = '';
     
     let total = 0;
@@ -201,16 +203,16 @@ function checkoutPix() {
 
 function confirmarPresenca() {
     const nome = document.getElementById('rsvp-name').value;
+    
     if(nome) {
-        const numeroWhatsApp = "5511966688598"; 
-        const mensagem = encodeURIComponent(`Olá! Gostaria de confirmar a presença no casamento de Bianca e Bruno. Convite em nome de: ${nome}`);
-        window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
+        const urlGoogleForms = "https://forms.gle/dEP5bN9yjrHWaKZt9";
+        
+        window.open(urlGoogleForms, '_blank');
     } else {
         alert("Por favor, preencha o seu nome no campo antes de clicar.");
     }
 }
 
-// Controle do Menu Mobile (3 pontinhos)
 function toggleMenu() {
     const navLinks = document.getElementById('nav-links');
     navLinks.classList.toggle('active');
@@ -221,5 +223,4 @@ function closeMenu() {
     navLinks.classList.remove('active');
 }
 
-// Inicia os presentes ao carregar a página
 window.onload = renderProducts;
