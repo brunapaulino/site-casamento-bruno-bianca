@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Casamento | Bianca & Bruno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="nav-logo">B & B</a>
+            
+            <!-- Botão do Menu (Hambúrguer / Três pontinhos) -->
+            <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#local" onclick="closeMenu()">Local</a></li>
+                <li><a href="cronograma.html">Cronograma</a></li>
+                <li><a href="#casal" onclick="closeMenu()">O Casal</a></li>
+                <li><a href="#presentes" onclick="closeMenu()">Lista de Presentes</a></li>
+                <li><a href="#presenca" onclick="closeMenu()">Presença</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h3 class="save-date-marquee">SAVE THE DATE</h3>
+        
+        <h1>Bianca & Bruno</h1>
+        <p>30 . 01 . 2027</p>
+        <p style="margin-top: 5px; font-size: 0.9rem;">São Caetano do Sul - SP</p>
+        <br/>
+        <a href="#presenca" style="color: var(--primary-color); font-family: 'Times New Roman', Times, serif; font-size: 1.2rem; text-decoration: none; transition: opacity 1.3s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+            Não se esqueça de confirmar a sua presença!
+        </a>
+    </section>
+
+    <section class="countdown-section">
+        <h2>Contagem Regressiva</h2>
+        <div class="timer">
+            <div class="timer-box"><span id="days">00</span><p>Dias</p></div>
+            <div class="timer-box"><span id="hours">00</span><p>Horas</p></div>
+            <div class="timer-box"><span id="minutes">00</span><p>Minutos</p></div>
+            <div class="timer-box"><span id="seconds">00</span><p>Segundos</p></div>
+        </div>
+    </section>
+
+    <section id="local" class="location-section">
+        <h2 class="section-title">Onde e Quando</h2>
+        <div class="location-grid">
+            
+            <!-- Card Cerimônia -->
+            <div class="location-card">
+                <h3>Cerimônia (Igreja)</h3>
+                <p><strong>Endereço:</strong> Rua Piauí, 774, São Caetano do Sul - SP</p>
+                <p><strong>Data:</strong> 30 de janeiro de 2027</p>
+                
+                <!-- Botões de Mapa -->
+                <div class="map-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Igreja+Sao+Joao+Batista+Rua+Piaui+774+Sao+Caetano+do+Sul" target="_blank" class="btn-map">Google Maps ou</a>
+                    <a href="https://waze.com/ul?q=Igreja+Sao+Joao+Batista+Rua+Piaui+774+Sao+Caetano+do+Sul&navigate=yes" target="_blank" class="btn-map">Waze</a>
+                </div>
+            </div>
+            
+            <!-- Card Recepção -->
+            <div class="location-card">
+                <h3>Recepção</h3>
+                <p><strong>Local:</strong> Victor's Buffet</p>
+                <p><strong>Endereço:</strong> Rua Saldanha Marinho, 259, São Caetano do Sul - SP</p>
+                
+                <!-- Botões de Mapa -->
+                <div class="map-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Victor's+Buffet+Rua+Saldanha+Marinho+259+Sao+Caetano+do+Sul" target="_blank" class="btn-map">Google Maps ou </a>
+                    <a href="https://waze.com/ul?q=Victor's+Buffet+Rua+Saldanha+Marinho+259+Sao+Caetano+do+Sul&navigate=yes" target="_blank" class="btn-map">Waze</a>
+                </div>
+            </div>
+            
+            <!-- Card Dress Code -->
+            <div class="location-card">
+                <h3>Dress Code</h3>
+                <p><strong>Desejável traje social</strong></p>
+                <p class="suggestion">Sugestão: tons neutros</p>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section id="casal" class="couple-section">
+        <h2 class="section-title">Um pouco sobre nós</h2>
+        <div class="photos">
+            <img src="img/noiva.png" alt="Bianca" class="photo-couple" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\' viewBox=\'0 0 200 200\'><circle cx=\'100\' cy=\'100\' r=\'100\' fill=\'%23eee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'80\'>👩🏼</text></svg>'">
+            <img src="img/noivo.png" alt="Bruno" class="photo-couple" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\' viewBox=\'0 0 200 200\'><circle cx=\'100\' cy=\'100\' r=\'100\' fill=\'%23eee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'80\'>🧑🏻</text></svg>'">
+        </div>
+        <div style="text-align: left; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+            <p style="margin-bottom: 15px;">Desde os primeiros momentos, sentimos que havia algo especial entre nós. O que começou com conversas, descobertas e muitos sorrisos logo se transformou em uma conexão profunda, construída com leveza, cumplicidade e admiração mútua.</p>
+            <p style="margin-bottom: 15px;">Ao longo dessa caminhada, aprendemos que o amor verdadeiro não acontece por acaso. Ele se fortalece nas pequenas escolhas diárias, no cuidado, no respeito e na decisão de caminhar juntos, mesmo diante dos desafios. Cada passo nos trouxe até aqui e nos fez ter a certeza de que fomos presenteados com um encontro que transformou nossas vidas.</p>
+            <p style="margin-bottom: 15px;">Deus sempre esteve à frente da nossa história, guiando nossos caminhos, sustentando nossos sonhos e abençoando cada capítulo que vivemos, encontramos nossa base, nossa força e a direção para construir uma família alicerçada na fé, no amor e nos valores que compartilhamos.</p>
+            <p style="margin-bottom: 15px;">Agora, com os corações cheios de gratidão, celebramos o início de uma nova etapa. Mais do que um casamento, escolhemos viver uma vida inteira de parceria, companheirismo e amor, confiando que Deus continuará conduzindo nossa jornada e abençoando a nossa união.</p>
+<p style="margin-bottom: 30px;">E é com essa alegria que esperamos compartilhar esse momento tão especial com vocês.</p>
+        </div>
+        
+        <a href="historia.html" style="display: block; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <div class="oval-container" style="margin: 30px auto 5px auto;">
+                <img src="img/quadrinhos-bru-bia.png" alt="Nossa História em Quadrinhos" class="couple-oval-img">
+            </div>
+        </a>
+
+        <a href="historia.html" class="btn-historia" style="margin-top: 0;">Mais sobre nós</a>
+        
+    </section>
+        
+</section>
+
+    <script src="js/script.js"></script>
+
+    <section id="presentes" class="gifts-section">
+        <h2 class="section-title">Lista de Presentes ❤️</h2>
+        <p class="subtitle">A presença de vocês é o nosso maior presente! Mas, se desejarem nos abençoar e fazer parte da construção do nosso futuro, criamos esta lista com muito carinho. ❤️<br><br><strong>Como funciona:</strong> Os itens abaixo são simbólicos. Ao escolher um presente, o valor será convertido em uma transferência (PIX) direta para nos ajudar a realizar cada um desses sonhos.</p>
+        <div class="cart-header">
+            <span id="cart-status" style="font-weight: 500; color: var(--text-dark);">🛒 Carrinho vazio</span>
+            <button class="btn-cart" onclick="openCart()">Ver Carrinho</button>
+        </div>
+
+        <div id="gifts-container">
+
+        </div>
+
+    </section>
+
+    <section id="presenca" class="rsvp-section">
+        <h2 class="section-title">Confirme a sua presença</h2>
+        <div class="rsvp-form">
+            <input type="text" placeholder="*Nome do convite: (Ex.: Tia Maria e Família)" id="rsvp-name">
+            <br>
+            <button class="btn-rsvp" onclick="confirmarPresenca()">Enviar Confirmação</button>
+        </div>
+    </section>
+
+    <section id="cronograma" class="cronograma-section">
+        <h2 class="section-title">Cronograma do Casamento</h2>
+        <div class="cronograma-box">
+            <p style="margin-bottom: 20px;">A cerimônia matrimonial irá ocorrer às <strong>19h30</strong> na <strong>Igreja São João Batista</strong>, localizada na Rua Piauí, 774, em São Caetano do Sul. Antes de sair da igreja, queremos que você nos ajude a jogar flores/arroz, nos desejando amor e muitas bênçãos em seu coração! ❤️</p>
+            
+            <p style="margin-bottom: 20px;">Após a cerimônia, haverá uma comemoração no <strong>Victor's Buffet</strong> (Rua Saldanha Marinho, 259, Santa Paula, São Caetano do Sul), pertinho da igreja onde nos casaremos! Teremos um <em>Cardápio Divino</em> de Massas, Salgados, Sobremesas e Bebidas, será um banquete!</p>
+            
+            <p style="margin-bottom: 20px;">Fique à vontade para curtir a festa! Dance, cante, pule, se divirta! A ideia é celebrar esse momento juntos. Teremos fotógrafo e videomaker, então viva o momento! se preocupe em tirar apenas algumas fotos, apenas para vermos sua perspectiva desse momento tão incrível para nós — iremos adorar que você compartilhe conosco.</p>
+            
+            <p style="margin-bottom: 0; font-style: italic; text-align: center; color: var(--primary-color); font-weight: 500;">Será um dia de muita alegria; cada pequeno momento foi pensado com cuidado para proporcionar um dia muitíssimo especial!</p>
+        </div>
+    </section>
+
+    <!-- Modal do Carrinho -->
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal">
+            <button class="close-modal" onclick="closeCart()">×</button>
+            <h2 style="font-family: var(--font-title); color: var(--primary-color);">Seu Carrinho</h2>
+            
+            <div id="cart-items-list" class="cart-items">
+                <p style="text-align:center; color:#888;">Seu carrinho está vazio.</p>
+            </div>
+            
+            <div class="cart-total" id="cart-total-box" style="display:none;">
+                Total: R$ <span id="cart-total-value">0,00</span>
+            </div>
+            
+            <button class="btn-checkout" id="btn-checkout" onclick="checkoutPix()" style="display:none;">
+                Gerar PIX para Pagamento
+            </button>
+
+            <div class="pix-box" id="pix-instructions">
+                <p><strong>Quase lá!</strong> Transfira o valor exato para a chave PIX abaixo:</p>
+                <div class="pix-key">11966688598</div>
+                <p style="font-size: 0.85rem; color: #666; margin-top:10px;">Após o pagamento, o presente já é de vocês! Muito obrigado! ❤️</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
