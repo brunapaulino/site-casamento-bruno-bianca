@@ -291,6 +291,8 @@ header {
     flex-direction: column;
     gap: 5px;
     padding: 5px;
+    background: none;
+    border: none;
 }
 
 .menu-toggle .dot {
@@ -304,8 +306,14 @@ header {
 
 /* Responsividade: Apenas para Celular e iPad (telas menores que 768px) */
 @media (max-width: 768px) {
+    .navbar {
+        flex-direction: row; /* Mantém o logo na esquerda e os pontinhos na direita */
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+
     .menu-toggle {
-        display: flex; /* O botão só aparece aqui */
+        display: flex; /* O botão só aparece no celular */
     }
 
     .nav-links {
@@ -333,7 +341,6 @@ header {
         display: block;
     }
 }
-
     .site-footer {
     text-align: center;
     padding: 60px 20px;
