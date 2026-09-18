@@ -11,183 +11,229 @@
             --text-dark: #4a4a4a;
             --text-light: #7a7a7a;
             --white: #ffffff;
+            --bg-color: #faf9f7;
             --font-title: 'Playfair Display', serif;
             --font-text: 'Montserrat', sans-serif;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-text); background-color: #f4efe9; color: var(--text-dark); line-height: 1.6; position: relative;}
         
-        .comic-body {
-            background-color: #f4efe9;
-            background-image: radial-gradient(#e6daca 1px, transparent 1px);
-            background-size: 20px 20px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: var(--font-text); 
+            background-color: var(--bg-color); 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            position: relative;
         }
-        .comic-header {
-            text-align: center;
-            padding: 70px 20px 20px;
-        }
-        .comic-header h1 {
-            font-family: var(--font-title);
-            font-size: 3rem;
-            color: #4a3b32;
-        }
-        .comic-header p {
-            font-family: var(--font-text);
-            color: #7a6a5a;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
+        
         .btn-voltar {
             position: absolute;
             top: 20px;
             left: 20px;
             text-decoration: none;
-            color: #4a3b32;
-            font-weight: bold;
+            color: var(--primary-color);
+            background-color: var(--white);
+            border: 1px solid var(--primary-color);
+            padding: 8px 18px;
+            border-radius: 25px;
             font-family: var(--font-text);
-            border: 1px solid #4a3b32;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: 0.3s;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             z-index: 1001;
+            animation: btnVoltarPulse 2.5s infinite ease-in-out;
         }
+
         .btn-voltar:hover {
-            background-color: #4a3b32;
-            color: #f4efe9;
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
-        .comic-grid {
+
+        @keyframes btnVoltarPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.65; transform: scale(1.03); }
+        }
+
+        .album-header {
+            text-align: center;
+            padding: 80px 20px 20px;
+        }
+        
+        .album-header h1 {
+            font-family: var(--font-title);
+            font-size: 3.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        .album-header p {
+            font-family: var(--font-title);
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        
+        .album-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            gap: 40px;
             max-width: 1100px;
-            margin: 40px auto 80px;
+            margin: 50px auto 80px;
             padding: 0 20px;
         }
-        .comic-panel {
-            background: #fffcf8;
-            border: 3px solid #4a3b32;
+        
+        .album-card {
+            background: var(--white);
+            padding: 16px 16px 35px 16px;
             border-radius: 4px;
-            padding: 12px;
-            box-shadow: 6px 6px 0px #4a3b32;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid #eae5df;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            transition: transform 0.3s;
-            height: 400px;
-        }
-        .comic-panel:hover {
-            transform: scale(1.02);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
         
-        /* Caixa onde a imagem de cada quadrinho vai ficar */
-        .comic-illustration {
+        .album-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(167, 149, 133, 0.15);
+        }
+        
+        .album-photo {
             width: 100%;
-            height: 100%;
-            border: 2px solid #4a3b32;
-            background: #e8ded3;
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
-            bottom: 60px;
+            height: 340px;
             overflow: hidden;
+            border-radius: 2px;
+            margin-bottom: 25px;
+            background-color: #f0ebe4;
         }
 
-        /* Faz a foto preencher o quadrinho perfeitamente */
-        .comic-illustration img {
+        .album-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.8s ease;
         }
         
-        .comic-caption {
-            background: #fffcf8;
-            border: 2px solid #4a3b32;
-            padding: 10px;
-            font-size: 0.85rem;
-            text-align: center;
-            width: 90%;
-            position: absolute;
-            bottom: -20px;
-            z-index: 2;
+        .album-card:hover .album-photo img {
+            transform: scale(1.05);
+        }
+        
+        .album-caption {
             font-family: var(--font-text);
-            color: #333;
-            line-height: 1.4;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            text-align: center;
+            line-height: 1.7;
+            padding: 0 15px;
+        }
+        
+        .album-caption strong {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-style: italic;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .btn-voltar {
+                position: static;
+                display: inline-block;
+                margin: 20px 0 0 20px;
+            }
+            .album-header {
+                padding-top: 30px;
+            }
+            .album-header h1 {
+                font-size: 2.4rem;
+            }
+            .album-photo {
+                height: 300px;
+            }
         }
     </style>
 </head>
-<body class="comic-body">
+<body>
 
-    <a href="index.html" class="btn-voltar">← Voltar para o Site</a>
+    <nav>
+        <a href="index.html" class="btn-voltar">← Voltar para o Site</a>
+    </nav>
 
-    <header class="comic-header">
-        <h1>Nossa Jornada Épica</h1>
-        <p>A História de Bianca e Bruno</p>
+    <header class="album-header">
+        <h1>A Nossa História</h1>
+        <p>Como os nossos caminhos se cruzaram</p>
     </header>
 
-    <div class="comic-grid">
+    <div class="album-grid">
         
-        <!-- Quadrinho 1 -->
-        <div class="comic-panel">
-            <div class="comic-illustration">
-                <!-- COLOCA A SUA FOTO DO QUADRINHO 1 AQUI -->
+        <div class="album-card">
+            <div class="album-photo">
                 <img src="img/presentes/tokyo-nosso-encontro.jpg" alt="O Encontro">
             </div>
-            <div class="comic-caption">
-                <strong>O Início:</strong> Tudo começou em uma fila de karaokê aqui na Tokyo em São Paulo. Apresentados por um amigo em comum, a conexão foi instantânea.
+            <div class="album-caption">
+                <strong>O Encontro</strong>
+                Tudo começou em uma fila de karaokê na Tokyo, em São Paulo. Apresentados por um amigo em comum, a conexão foi instantânea.
             </div>
         </div>
 
-        <!-- Quadrinho 2 -->
-        <div class="comic-panel">
-            <div class="comic-illustration">
-                <!-- COLOCA A SUA FOTO DO QUADRINHO 2 AQUI -->
+        <div class="album-card">
+            <div class="album-photo">
                 <img src="img/foto-juntos-brunoebia-2026-09-12 225239.png" alt="Inseparáveis">
             </div>
-            <div class="comic-caption">
-                Desde aquela noite, nunca mais se separaram. Passaram a compartilhar a vida, os sorrisos e a construir um amor para a vida inteira.
+            <div class="album-caption">
+                <strong>Inseparáveis</strong>
+                Desde aquela noite, nunca mais nos separamos. Passamos a compartilhar a vida, os sorrisos e a construir um amor para a vida inteira.
             </div>
         </div>
 
-        <div class="comic-panel">
-            <div class="comic-illustration">
+        <div class="album-card">
+            <div class="album-photo">
                 <img src="img/foto-bruebia-2026-09-12 225138.png" alt="A Viagem">
             </div>
-            <div class="comic-caption">
-                Poucos anos depois, a primeira grande viagem! Desbravaram as paisagens incríveis da Suíça, as paisagens mais indescritíveis da Escócia, e as ruas históricas de Londres.
+            <div class="album-caption">
+                <strong>Pelo Mundo</strong>
+                A primeira grande viagem a dois! Desbravamos as paisagens da Suíça, os cenários indescritíveis da Escócia e as ruas históricas de Londres.
             </div>
         </div>
 
-        <!-- Quadrinho 4 -->
-        <div class="comic-panel">
-            <div class="comic-illustration">
-                <!-- COLOCA A SUA FOTO DO QUADRINHO 4 AQUI -->
+        <div class="album-card">
+            <div class="album-photo">
                 <img src="img/presentes/sky-bru-bia.jpg" alt="Outlander Vibes">
             </div>
-            <div class="comic-caption">
-                E ali, na Escócia, naquelas montanhas deslumbrantes e cenários que os fizeram sentir dentro da série <em>Outlander</em>, o momento mais marcante ocorreu para os dois.
+            <div class="album-caption">
+                <strong>Magia na Escócia</strong>
+                Ali, naquelas montanhas deslumbrantes que nos fizeram sentir dentro da série Outlander, o momento mais marcante de todos estava prestes a acontecer.
             </div>
         </div>
 
-        <!-- Quadrinho 5 -->
-        <div class="comic-panel">
-            <div class="comic-illustration">
-                <img src="img/presentes/Bruno-Bia-Escocia-Juntos.jpg" alt="O Pedido">
+        <div class="album-card">
+            <div class="album-photo">
+                <img src="img/presentes/o-anel.jpeg" alt="O Pedido">
             </div>
-            <div class="comic-caption">
-                O Bruno se ajoelhou, ali, ao lado da mágica Ilha de Skye, e fez O pedido de casamento para a Bianca.
+            <div class="album-caption">
+                <strong>O Pedido</strong>
+                O Bruno se ajoelhou ao lado da mágica Ilha de Skye e fez O pedido. Um "sim" que ecoou pelas montanhas escocesas.
             </div>
         </div>
 
-        <!-- Quadrinho 6 -->
-        <div class="comic-panel">
-            <div class="comic-illustration">
-                <img src="img/biaebruno.jpeg" alt="O Sim">
+        <div class="album-card">
+            <div class="album-photo">
+                <img src="img/presentes/Bruno-Bia-Escocia-Juntos.jpg" alt="O Grande Sim">
             </div>
-            <div class="comic-caption">
-                Com a benção de Deus, ocorrerá a união de suas vidas na Igreja Católica em São Caetano do Sul. O início do tão esperado "felizes para sempre"!
+            <div class="album-caption">
+                <strong>Para Sempre</strong>
+                Com a bênção de Deus, selaremos a união de nossas vidas na Igreja Católica. O início do nosso tão esperado "felizes para sempre"!
             </div>
         </div>
 
